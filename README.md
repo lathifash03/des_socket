@@ -7,11 +7,11 @@ Proyek ini merupakan implementasi algoritma enkripsi DES (Data Encryption Standa
 
 ## Table of Contents
 
-- [Struktur Proyek](#strukturProyek)
-- [Cara Menjalankan Proyek](#caraMenjalankanProyek)
+- [Struktur Proyek](#StrukturProyek)
+- [Cara Menjalankan Proyek](#CaraMenjalankanProyek)
 - [Catatan](#catatan)
 
-## Struktur Proyek
+## StrukturProyek
 /socket │ ├── client.py ├── server.py ├── des_algorithm.py └── README.md
 
 
@@ -52,7 +52,7 @@ File ini berisi implementasi dari algoritma DES, termasuk fungsi untuk:
 - `decrypt(data: str, key: str) -> str`: Menerima string terenkripsi dan kunci, kemudian mengembalikan string yang didekripsi.
 le ini berfungsi sebagai panduan untuk proyek, menjelaskan struktur dan alur kerja dari file-file yang ada. Ini bertujuan untuk memberikan pemahaman yang jelas kepada pengguna tentang cara menjalankan dan menggunakan proyek ini.
 
-## Cara Menjalankan Proyek
+## CaraMenjalankanProyek
 1. **Install Dependencies:**
    ```bash
    pip install pycryptodome
