@@ -10,6 +10,7 @@ Proyek ini merupakan implementasi algoritma enkripsi DES (Data Encryption Standa
 - [Struktur Proyek](#StrukturProyek)
 - [Cara Menjalankan Proyek](#CaraMenjalankanProyek)
 - [Catatan](#catatan)
+- [Contoh](#contoh)
 
 ## StrukturProyek
 /socket │ ├── client.py ├── server.py ├── des_algorithm.py └── README.md
@@ -54,7 +55,7 @@ le ini berfungsi sebagai panduan untuk proyek, menjelaskan struktur dan alur ker
 
 ## CaraMenjalankanProyek
 1. **Install Dependencies:**
-   ```bash
+```bash
    pip install pycryptodome
 ```
 
@@ -76,5 +77,28 @@ Masukkan string yang ingin Anda enkripsi saat diminta oleh client.
 
 ## Catatan:
 
-Pastikan tidak ada aplikasi lain yang menggunakan port yang sama (misalnya 12345).
-Untuk menutup server, cukup tekan Ctrl+C di terminal yang menjalankan server.
+- Pastikan tidak ada aplikasi lain yang menggunakan port yang sama (misalnya 12345).
+- Untuk menutup server, cukup tekan Ctrl+C di terminal yang menjalankan server.
+
+## Contoh: 
+
+Untuk menjalankan program dapat dilakukan dengan dua terminal agar dapat saling mengirim dan menerima pesan. 
+
+**Menjalankan Server**
+1. Server menunggu permintaan dari client
+<img width="616" alt="Screenshot 2567-10-30 at 23 08 28" src="https://github.com/user-attachments/assets/e204c4f2-f3a5-4135-a3ef-33b22ea92314">
+
+2. Server siap menerima pesan dari client
+<img width="615" alt="Screenshot 2567-10-30 at 23 09 19" src="https://github.com/user-attachments/assets/9cb971d7-d139-419e-9850-223ece607ac3">
+
+3. Server menerima pesan
+<img width="1293" alt="Screenshot 2567-10-30 at 23 12 32" src="https://github.com/user-attachments/assets/3b662a84-9b76-4fec-8390-a63d79568731">
+
+
+**Menjalankan Client**
+1. Client dijalankan
+<img width="659" alt="Screenshot 2567-10-30 at 23 10 48" src="https://github.com/user-attachments/assets/8b052a61-e940-4ad3-8a74-0f6208035cb1">
+
+2. Pesan dikirim
+<img width="1293" alt="Screenshot 2567-10-30 at 23 12 32" src="https://github.com/user-attachments/assets/3b662a84-9b76-4fec-8390-a63d79568731">
+
