@@ -16,7 +16,7 @@ Proyek ini merupakan implementasi algoritma enkripsi DES (Data Encryption Standa
 
 
 ### 1. `client.py`
-File ini bertanggung jawab untuk:
+Client akan digunakan untuk:
 - Membuat koneksi ke server.
 - Mengirim string terenkripsi ke server setelah mengenkripsi input pengguna.
 - Menerima respons dari server, yang merupakan string yang didekripsi.
@@ -29,7 +29,7 @@ File ini bertanggung jawab untuk:
 - Menerima string terdekripsi dari server dan menampilkannya.
 
 ### 2. `server.py`
-File ini bertanggung jawab untuk:
+File ini dibuat untuk:
 - Menerima koneksi dari client.
 - Menerima string terenkripsi dari client.
 - Menggunakan kelas `DES` dari `des_algorithm.py` untuk mendekripsi string.
