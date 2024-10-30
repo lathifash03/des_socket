@@ -1,11 +1,14 @@
+Nama: Lathifah Sahda
+NRP: 5025221159
+
 # DES Encryption/Decryption with Socket Programming
 ## Deskripsi
 Proyek ini merupakan implementasi algoritma enkripsi DES (Data Encryption Standard) menggunakan socket programming untuk mentransfer string terenkripsi antar dua pengguna. Proyek ini terdiri dari beberapa file yang bekerja sama untuk menyediakan fungsionalitas enkripsi dan dekripsi.
 
 ## Table of Contents
 
-- [Struktur Proyek](#Struktur Proyek)
-- [Cara Menjalankan Proyek](#Cara Menjalankan Proyek)
+- [Struktur Proyek](#strukturProyek)
+- [Cara Menjalankan Proyek](#caraMenjalankanProyek)
 - [Catatan](#catatan)
 
 ## Struktur Proyek
