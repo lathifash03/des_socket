@@ -3,31 +3,45 @@
 # pip install pycryptodome
 
 import socket
-from des_algorithm import des_decrypt  # Mengimpor fungsi dekripsi dari des_algorithm
+from des_algorithm import des_decrypt, des_encrypt
 
-# Key yang disepakati oleh server dan client
-KEY = b"abcdefgh"  # Key ini hardcoded dan sesuai di des_algorithm.py
+def main():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(("localhost", 12345))
+    server_socket.listen(1)
+    print("Server berjalan dan menunggu koneksi dari client...")
 
-# Inisialisasi socket untuk server
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("localhost", 12345))  # Binding di port 12345
-server_socket.listen(1)  # Maksimal satu client yang terhubung
+    conn, addr = server_socket.accept()
+    print(f"Koneksi dari: {addr}")
 
-print("Server berjalan dan menunggu koneksi dari client...")
+    while True:
+        # Terima pesan terenkripsi dalam format biner dari client
+        encrypted_data = conn.recv(1024).decode()  # Diterima dalam bentuk string biner
+        if not encrypted_data:
+            print("Client telah memutus koneksi.")
+            break
 
-# Menerima koneksi dari client
-client_socket, client_address = server_socket.accept()
-print(f"Koneksi dari: {client_address}")
+        # Dekripsi pesan yang diterima
+        decrypted_message = des_decrypt(encrypted_data)
+        print(f"Pesan terenkripsi diterima dari client: {encrypted_data}")
+        print(f"Pesan setelah dekripsi: {decrypted_message}")
 
-# Menerima pesan terenkripsi dari client
-encrypted_data = client_socket.recv(1024)  # Maksimal menerima 1024 byte
-print(f"Data terenkripsi diterima dari client: {encrypted_data}")
+        # Jika pesan dari client adalah "x", keluar dari loop
+        if decrypted_message.lower() == 'x':
+            print("Client menghentikan komunikasi.")
+            break
 
-# Dekripsi data terenkripsi menggunakan fungsi des_decrypt
-decrypted_data = des_decrypt(encrypted_data)
+        # Kirim pesan terenkripsi kembali ke client
+        response_message = input("Masukkan pesan yang ingin dikirim ke client (atau 'x' untuk keluar): ")
+        encrypted_response = des_encrypt(response_message)
+        conn.send(encrypted_response.encode())  # Mengirimkan string biner terenkripsi
 
-print(f"Data setelah dekripsi: {decrypted_data}")
+        if response_message.lower() == 'x':
+            print("Menghentikan komunikasi.")
+            break
 
-# Tutup koneksi
-client_socket.close()
-server_socket.close()
+    conn.close()
+    server_socket.close()
+
+if __name__ == "__main__":
+    main()

@@ -1,34 +1,20 @@
-# des_algorithm.py
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Cipher import DES
 
-# Kunci DES (harus 8 byte)
-key = b'abcdefgh'  # Key ini hardcoded, harus sama di kedua client
+key = b'abcdefgh'  # Key hardcoded yang sama di server dan client
 
 def des_encrypt(plain_text):
-    """
-    Funxgsi untuk mengenkripsi teks menggunakan DES
-    :param plain_text: Teks yang akan dienkripsi
-    :return: Teks terenkripsi dalam bentuk byte
-    """
-    # Inisialisasi cipher DES dalam mode ECB
     des = DES.new(key, DES.MODE_ECB)
-    # Tambahkan padding pada plain text agar panjangnya sesuai kelipatan 8 byte
     padded_text = pad(plain_text.encode(), DES.block_size)
-    # Enkripsi teks yang telah di-padding
     encrypted_text = des.encrypt(padded_text)
-    return encrypted_text
+    # Konversi byte terenkripsi ke biner
+    encrypted_binary = ''.join(format(byte, '08b') for byte in encrypted_text)
+    return encrypted_binary  # Mengembalikan teks terenkripsi dalam format biner
 
-def des_decrypt(encrypted_text):
-    """
-    Fungsi untuk mendekripsi teks menggunakan DES
-    :param encrypted_text: Teks yang terenkripsi dalam bentuk byte
-    :return: Teks asli setelah dekripsi
-    """
-    # Inisialisasi cipher DES dalam mode ECB
+def des_decrypt(encrypted_binary):
+    # Konversi dari biner ke byte
+    encrypted_bytes = int(encrypted_binary, 2).to_bytes(len(encrypted_binary) // 8, byteorder='big')
     des = DES.new(key, DES.MODE_ECB)
-    # Dekripsi teks
-    decrypted_padded_text = des.decrypt(encrypted_text)
-    # Hilangkan padding setelah dekripsi
+    decrypted_padded_text = des.decrypt(encrypted_bytes)
     decrypted_text = unpad(decrypted_padded_text, DES.block_size)
     return decrypted_text.decode()
