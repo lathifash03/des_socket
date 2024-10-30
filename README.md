@@ -1,5 +1,6 @@
-Nama: Lathifah Sahda
-NRP: 5025221159
+## Nama: Lathifah Sahda
+
+## NRP: 5025221159
 
 # DES Encryption/Decryption with Socket Programming
 ## Deskripsi
