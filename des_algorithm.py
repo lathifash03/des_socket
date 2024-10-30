@@ -1,3 +1,4 @@
+# des_algorithm.py
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Cipher import DES
 
@@ -6,7 +7,7 @@ key = b'abcdefgh'  # Key ini hardcoded, harus sama di kedua client
 
 def des_encrypt(plain_text):
     """
-    Fungsi untuk mengenkripsi teks menggunakan DES
+    Funxgsi untuk mengenkripsi teks menggunakan DES
     :param plain_text: Teks yang akan dienkripsi
     :return: Teks terenkripsi dalam bentuk byte
     """
@@ -31,14 +32,3 @@ def des_decrypt(encrypted_text):
     # Hilangkan padding setelah dekripsi
     decrypted_text = unpad(decrypted_padded_text, DES.block_size)
     return decrypted_text.decode()
-
-# Tes sederhana
-if __name__ == "__main__":
-    message = "Ini adalah pesan rahasia yang panjang lebih dari 8 karakter"
-    print("Pesan asli:", message)
-
-    encrypted = des_encrypt(message)
-    print("Pesan terenkripsi:", encrypted)
-
-    decrypted = des_decrypt(encrypted)
-    print("Pesan setelah dekripsi:", decrypted)
